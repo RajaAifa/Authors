@@ -1,0 +1,27 @@
+/* Style des liens de navigation */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.link {
+  text-decoration: none;
+  color: #bdbdbd;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.link:hover {
+  color: #4CAF50; /* Changer la couleur au survol */
+}
+
+/* Style du header */
+.header {
+  padding: 1rem;
+  background-color: #222;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
