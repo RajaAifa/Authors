@@ -1,40 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Authors
 
-## Getting Started
+A Next.js CRUD application for managing a list of authors and handling contact form submissions, using JSON files as a lightweight data store and Yup/react-hook-form for validation.
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The app has two main features:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Authors management**: a full CRUD interface (add, edit, delete, list) for authors, backed by a JSON file (`data/authors.json`) through API routes.
+- **Contact form**: a validated contact form (name, email, message) that submits to an API route and stores messages in `data/contactMessages.json`. Messages can be viewed and deleted from a dedicated Messages page.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Validation is handled with `react-hook-form` and `yup` on the client, with matching validation in the API routes on the server.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Technologies Used
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+- **Framework:** Next.js 15 (Pages Router), React 19
+- **Forms & Validation:** react-hook-form, Yup (`@hookform/resolvers`)
+- **Data Storage:** Flat JSON files (Node.js `fs` module), no external database
+- **Styling:** CSS Modules
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Prerequisites
 
-## Learn More
+- Node.js 18+
 
-To learn more about Next.js, take a look at the following resources:
+## Run Locally
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+Clone the project:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    git clone https://github.com/RajaAifa/Authors.git
 
-## Deploy on Vercel
+Go to the project directory:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    cd Authors
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+Install dependencies:
+
+    npm install
+
+Start the development server:
+
+    npm run dev
+
+The app runs at http://localhost:3000.
+
+## How to Use
+
+1. Go to `/authors` to view, add, edit, or delete authors.
+2. Go to `/contact` to submit a contact message (name, email, message), validated on the client and the server.
+3. Go to `/messages` to view all submitted contact messages and delete them.
+
+## Project Structure
+
+    Authors/
+    ├── pages/
+    │   ├── api/
+    │   │   ├── authors.js        # CRUD endpoints for authors (GET/POST/PUT/DELETE)
+    │   │   ├── contact.js        # Handles contact form submissions
+    │   │   └── messages.js       # List/delete contact messages
+    │   ├── authors.js            # Authors management page
+    │   ├── contact.js            # Contact form page
+    │   ├── messages.js           # Submitted messages page
+    │   └── index.js
+    ├── Components/
+    │   ├── Header.js
+    │   └── Form.js
+    ├── data/
+    │   ├── authors.json          # Authors data store
+    │   └── contactMessages.json  # Contact messages data store
+    └── styles/
